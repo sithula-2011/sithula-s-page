@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Designs | Visionary Digital Creations</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* CSS - The Creative Styling Reimagined */
+
+        :root {
+            --primary-color: #8A2387;
+            --secondary-color: #E94057;
+            --tertiary-color: #F27121;
+            --accent-color: #00f2ea;
+            --dark-color: #12121c;
+            --light-color: #f7f7f7;
+            --glass-color: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --main-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+        }
+
+        /* General Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        /* Custom Animated Cursor */
+        .cursor {
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease-out;
+            z-index: 9999;
+            backdrop-filter: blur(2px);
+        }
+        
+        .cursor-grow {
+            transform: scale(3) translate(-15%, -15%);
+            background-color: var(--accent-color);
+            mix-blend-mode: difference;
+            border: none;
+        }
+
+        /* Header and Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 90%;
+            z-index: 1000;
+            background: var(--glass-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            transition: top 0.3s ease;
+        }
+
+        .header-hidden {
+            top: -100px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.4s ease;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Background Shapes */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        .hero::before {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-color);
+            top: 10%;
+            left: 10%;
+        }
+
+        .hero::after {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-color);
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 7rem); /* Responsive Font Size */
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.1;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero h1 .char { /* For Text Animation */
+             transform: translateY(115px);
+             transition: transform 0.5s;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-top: 1.5rem;
+            color: #ccc;
+            max-width: 800px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        .scroll-indicator .mouse {
+            width: 25px;
+            height: 40px;
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .scroll-indicator .wheel {
+            width: 5px;
+            height: 5px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 1.5s infinite;
+        }
+        
+        @keyframes scroll {
+            0% { top: 8px; opacity: 1; }
+            100% { top: 20px; opacity: 0; }
+        }
+
+        
+        /* General Section Styling */
+        .section {
+            padding: 120px 10%;
+            overflow: hidden; /* Important for scroll animations */
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 5rem;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+        }
+        
+        .hidden-anim { /* For JS observer */
+             opacity: 0;
+             filter: blur(5px);
+             transform: translateY(100px);
+             transition: all 1s;
+        }
+
+        .show-anim {
+             opacity: 1;
+             filter: blur(0);
+             transform: translateY(0);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--glass-color);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.4s ease, background-color 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* Portfolio Grid */
+        #portfolio {
+            background-color: var(--dark-color);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: var(--glass-color);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(18, 18, 28, 0.95), transparent);
+            padding: 2.5rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.7rem;
+        }
+
+        .portfolio-overlay p {
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        /* Process Section */
+        .process-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .process-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--border-color);
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-step .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            background: var(--dark-color);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            min-width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+        }
+        
+        .process-step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            padding-top: 0.7rem;
+        }
+        .process-step p {
+             line-height: 1.7;
+             color: #ccc;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--glass-color);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-card p {
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .testimonial-card p.author {
+            margin-top: 2rem;
+            font-weight: 700;
+            font-style: normal;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            background: var(--glass-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.2rem;
+            color: var(--light-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #aaa;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 242, 234, 0.2);
+        }
+        
+        .btn {
+            background: var(--main-gradient);
+            background-size: 200%;
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            background-position: right;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            margin-bottom: 2rem;
+        }
+        .social-links a {
+            color: #aaa;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: 100px 5%;
+            }
+            .section-title {
+                 margin-bottom: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+
+    <header>
+        <div class="logo">Stellar</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Next page</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="animate-text">Visionary Digital Creations</h1>
+            <p>Weaving pixels into beautiful, interactive experiences that captivate and convert.</p>
+            <div class="scroll-indicator">
+                Scroll Down
+                <div class="mouse"><div class="wheel"></div></div>
+            </div>
+        </section>
+        
+        <section id="services" class="section">
+            <h2 class="section-title hidden-anim">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card hidden-anim" style="transition-delay: 100ms;">
+                    <div class="icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Web Design</h3>
+                    <p>Creating stunning, responsive, and user-friendly websites that look great on any device.</p>
+                </div>
+                <div class="service-card hidden-anim" style="transition-delay: 200ms;">
+                    <div class="icon"><i class="fas fa-palette"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>Designing intuitive and engaging user interfaces that provide meaningful experiences.</p>
+                </div>
+                <div class="service-card hidden-anim" style="transition-delay: 300ms;">
+                    <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Branding</h3>
+                    <p>Developing unique brand identities with memorable logos, color schemes, and typography.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <h2 class="section-title hidden-anim">Selected Work</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item hidden-anim" style="transition-delay: 100ms;">
+                    <img src="Cosmic-Odyssey-banner-Mike-Mignola-e1661278434239.jpg" alt="Project 1">
+                    <div class="portfolio-overlay"><h3>Cosmic Odyssey</h3><p>Branding & Web Design</p></div>
+                </div>
+                 <div class="portfolio-item hidden-anim" style="transition-delay: 200ms;">
+                    <img src="CodeFlow AI.jpg" alt="Project 2">
+                    <div class="portfolio-overlay"><h3>CodeFlow AI</h3><p>UI/UX Design for SaaS</p></div>
+                </div>
+                <div class="portfolio-item hidden-anim" style="transition-delay: 300ms;">
+                    <img src="i 1.jpeg" alt="Project 3">
+                    <div class="portfolio-overlay"><h3>Rhythm Fest</h3><p>Event Website</p></div>
+                </div>
+                 <center><div class="portfolio-item hidden-anim" style="transition-delay: 400ms;">
+                    <img src="i2.jpeg" alt="Project 4">
+                    <div class="portfolio-overlay"><h3>TechVerse</h3><p>E-Commerce Platform</p></div></center>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="section">
+            <h2 class="section-title hidden-anim">Our Creative Process</h2>
+            <div class="process-wrapper">
+                 <div class="process-step hidden-anim" style="transition-delay: 100ms;">
+                     <div class="number">1</div>
+                     <div class="content"><h3>Discovery & Strategy</h3><p>We start by understanding your vision, goals, and audience to create a solid strategic foundation for the project.</p></div>
+                 </div>
+                 <div class="process-step hidden-anim" style="transition-delay: 200ms;">
+                     <div class="number">2</div>
+                     <div class="content"><h3>Design & Prototyping</h3><p>We craft wireframes and high-fidelity mockups, focusing on user experience and visual appeal before a single line of code is written.</p></div>
+                 </div>
+                 <div class="process-step hidden-anim" style="transition-delay: 300ms;">
+                     <div class="number">3</div>
+                     <div class="content"><h3>Development & Build</h3><p>Our developers bring the designs to life using clean, efficient code and the latest web technologies for a flawless final product.</p></div>
+                 </div>
+                 <div class="process-step hidden-anim" style="transition-delay: 400ms;">
+                     <div class="number">4</div>
+                     <div class="content"><h3>Launch & Optimization</h3><p>After rigorous testing, we deploy your project. We then monitor performance and provide ongoing support to ensure continued success.</p></div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title hidden-anim">About Us</h2>
+            <p class="hidden-anim" style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; font-size: 1.1rem; color: #ccc;">We are a passionate team of designers and developers dedicated to crafting stunning digital solutions. Our philosophy is simple: combine beautiful aesthetics with flawless functionality. We believe in the power of design to solve problems, tell stories, and create joy. From a simple idea to a fully-realized digital experience, we're here to build something amazing together.</p>
+        </section>
+
+        <!-- Testimonials section removed -->
+
+        <section id="contact" class="section">
+            <h2 class="section-title hidden-anim">Get In Touch</h2>
+            <form class="contact-form hidden-anim">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2025 Stellar Designs. created by sithula vikasitha.</p>
+    </footer>
+
+    <script>
+    // --- Hero Text Animation ---
+    const text = document.querySelector('.animate-text');
+    text.innerHTML = text.textContent.replace(/\S/g, "<span class='char' style='display:inline-block;'>$&</span>");
+    const chars = text.querySelectorAll('.char');
+    let delay = 0;
+    chars.forEach(char => {
+        setTimeout(() => {
+            char.style.transform = 'translateY(0)';
+        }, delay);
+        delay += 30; // 30ms delay between each character
+    });
+
+
+    // --- Custom Animated Cursor ---
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+        cursor.style.top = e.clientY + 'px';
+        cursor.style.left = e.clientX + 'px';
+    });
+    
+    document.querySelectorAll('a, button, .portfolio-item, .service-card, .social-links a').forEach(el => {
+        el.addEventListener('mouseover', () => cursor.classList.add('cursor-grow'));
+        el.addEventListener('mouseout', () => cursor.classList.remove('cursor-grow'));
+    });
+
+
+    // --- Scroll-Triggered Animations ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show-anim');
+            } else {
+                // Optional: remove class to re-animate on scroll up
+                // entry.target.classList.remove('show-anim');
+            }
+        });
+    }, {
+        threshold: 0.2 // Trigger when 20% of the item is visible
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden-anim');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+
+    // --- Hide Header on Scroll ---
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        if (lastScrollY < window.scrollY) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+        }
+        lastScrollY = window.scrollY;
+    });
+
+    </script>
+</body>
+</html>
